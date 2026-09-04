@@ -65,23 +65,41 @@ const register = async (req, res) => {
 // @route POST /api/auth/login
 const login = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const email = String(req.body.email || "").trim().toLowerCase();
+    const password = String(req.body.password || "");
 
     if (!email || !password) {
-      return res.status(400).json({ message: "กรุณากรอก email และ password" });
+      return res.status(400).json({
+        message: "กรุณากรอก email และ password",
+      });
     }
 
-    // ต้องระบุ .select("+password") เพราะ schema ตั้ง select:false ไว้
     const customer = await Customer.findOne({ email }).select("+password");
 
-    if (!customer || !(await customer.comparePassword(password))) {
-      return res.status(401).json({ message: "email หรือ password ไม่ถูกต้อง" });
+    if (!customer) {
+      return res.status(401).json({
+        message: "ไม่พบ email นี้ในระบบ",
+      });
+    }
+
+    if (!customer.password) {
+      return res.status(500).json({
+        message: "บัญชีนี้ไม่มี password ในฐานข้อมูล",
+      });
+    }
+
+    const isMatch = await customer.comparePassword(password);
+
+    if (!isMatch) {
+      return res.status(401).json({
+        message: "password ไม่ถูกต้อง",
+      });
     }
 
     const token = generateToken(customer._id);
     setTokenCookie(res, token);
 
-    res.status(200).json({
+    return res.status(200).json({
       message: "login สำเร็จ",
       customer: {
         id: customer._id,
@@ -92,7 +110,11 @@ const login = async (req, res) => {
       token,
     });
   } catch (error) {
-    res.status(500).json({ message: "เกิดข้อผิดพลาด", error: error.message });
+    console.error("LOGIN ERROR:", error);
+
+    return res.status(500).json({
+      message: "LOGIN ERROR: " + error.message,
+    });
   }
 };
 
