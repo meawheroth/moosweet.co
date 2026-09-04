@@ -24,10 +24,9 @@ function updateAuthUI(){
  });
 }
 async function submitAuth(mode){
- const email=document.getElementById("email").value,password=document.getElementById("password").value;
- const body={email,password};if(mode==="register")body.username=document.getElementById("username").value;
- try{const data=await api("/auth/"+mode,{method:"POST",body:JSON.stringify(body)});currentUser=data.customer;showToast(mode==="login"?"เข้าสู่ระบบสำเร็จ 🎉":"สมัครสมาชิกสำเร็จ 🎉");setTimeout(()=>location.href=currentUser.role==="admin"?"admin.html":"index.html",400);}
- catch(e){document.getElementById("authMsg").textContent=e.message;}
+  const email=document.getElementById("email").value.trim().toLowerCase(),password=document.getElementById("password").value;
+  const body={email,password};if(mode==="register")body.username=document.getElementById("username").value;
+  try{const data=await api("/auth/"+mode,{method:"POST",body:JSON.stringify(body)});currentUser=data.customer;showToast(mode==="login"?"เข้าสู่ระบบสำเร็จ 🎉":"สมัครสมาชิกสำเร็จ 🎉");setTimeout(()=>location.href=currentUser.role==="admin"?"admin.html":"index.html",400);} catch(e){document.getElementById("authMsg").textContent=e.message;}
 }
 async function logout(){
  try{await api("/auth/logout",{method:"POST"});}catch(e){}
