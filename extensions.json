@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "mongodb.mongodb-vscode",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "humao.rest-client"
+  ]
+}

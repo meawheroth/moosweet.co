@@ -1,0 +1,48 @@
+@baseUrl = http://localhost:3000
+
+### สมัครสมาชิก (Register)
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "somchai",
+  "email": "somchai@example.com",
+  "password": "123456",
+  "phone": "0812345678",
+  "address": {
+    "street": "123 ถนนสุขุมวิท",
+    "district": "คลองเตย",
+    "province": "กรุงเทพฯ",
+    "postalCode": "10110"
+  }
+}
+
+### เข้าสู่ระบบ (Login)
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "somchai@example.com",
+  "password": "123456"
+}
+
+### ดูข้อมูลตัวเอง (ต้อง login ก่อน - ใช้ cookie ที่ได้จาก login)
+GET {{baseUrl}}/api/auth/me
+
+### ออกจากระบบ (Logout)
+POST {{baseUrl}}/api/auth/logout
+
+### เพิ่มสินค้า (ต้อง login ก่อน)
+POST {{baseUrl}}/api/products
+Content-Type: application/json
+
+{
+  "name": "เสื้อยืดสีขาว",
+  "description": "เสื้อยืดผ้าฝ้าย 100%",
+  "quantity": 50,
+  "price": 199,
+  "category": "เสื้อผ้า"
+}
+
+### ดูสินค้าทั้งหมด
+GET {{baseUrl}}/api/products

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MooSweet - รายละเอียดพนักงาน</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<nav class="navbar">
+  <a class="brand" href="index.html">🍓 <span>MooSweet</span></a>
+  <div class="menu">
+    <a href="index.html">หน้าแรก</a>
+    <a href="index.html#products">สินค้า</a>
+    <a href="about.html">เกี่ยวกับร้าน</a>
+    <a href="contact.html">ติดต่อ</a>
+    <a href="orders.html" id="ordersLink">คำสั่งซื้อ</a>
+    <a href="admin.html" id="adminLink" class="admin-link" style="display:none">จัดการร้าน</a>
+    <a href="login.html" id="authLink">เข้าสู่ระบบ</a>
+    <button id="logoutBtn" class="logout-btn" type="button" onclick="logout()" style="display:none">ออกจากระบบ</button>
+    <button class="cart-trigger" onclick="showCart()">🛒 <span>ตะกร้า</span> <b id="cartCount">0</b></button>
+  </div>
+</nav>
+</header>
+
+<main>
+  <section class="employees-section">
+    <h2>🍞 รายละเอียดพนักงาน</h2>
+    <p class="employees-intro">สมาชิกและผู้ดูแลร้าน MooSweet</p>
+
+    <div class="employees-grid">
+
+      <!-- คนที่ 1 -->
+      <div class="employee-card">
+        <div class="employee-info">
+          <div class="employee-icon">
+            <img src="member1.jpg" alt="Pongsakorn" onerror="this.replaceWith('👤')">
+          </div>
+          <h3>พงศกร กรอบเพ็ชร</h3>
+          <div class="employee-line"></div>
+          <p><strong>ตำแหน่ง:</strong> เจ้าของร้าน</p>
+          <p><strong>หน้าที่:</strong> วางแผนงาน ควบคุมงาน และดูแลร้าน เขียนโค้ดและพัฒนาเว็บไซต์</p>
+          <p>🐶 GitHub ของฉัน</p>
+          <a href="https://pongsakornmoo151101-dev.github.io/Resume-by-MOOWAN/" target="_blank">Resume</a>
+        </div>
+      </div>
+
+      <!-- คนที่ 2 -->
+      <div class="employee-card">
+        <div class="employee-info">
+          <div class="employee-icon">
+            <img src="member2.jpg" alt="SANHANAT" onerror="this.replaceWith('👤')">
+          </div>
+          <h3>สัณหณัฐ หมินแดง</h3>
+          <div class="employee-line"></div>
+          <p><strong>ตำแหน่ง:</strong> พนักงาน</p>
+          <p><strong>หน้าที่:</strong> ออกแบบและจัดทำสื่อนำเสนอ</p>
+          <p>🐶 GitHub ของฉัน</p>
+          <a href="https://euro551.github.io/resume/#skills" target="_blank">Resume</a>
+        </div>
+      </div>
+
+      <!-- คนที่ 3 -->
+      <div class="employee-card">
+        <div class="employee-info">
+          <div class="employee-icon">
+            <img src="member3.jpg" alt="THANAKORN" onerror="this.replaceWith('👤')">
+          </div>
+          <h3>ธนากร เรืองพลตรี</h3>
+          <div class="employee-line"></div>
+          <p><strong>ตำแหน่ง:</strong> พนักงาน</p>
+          <p><strong>หน้าที่:</strong> เขียนโค้ดและพัฒนาเว็บไซต์</p>
+          <p>🐶 GitHub ของฉัน</p>
+          <a href="https://resume-6840035581.onrender.com/" target="_blank">Resume</a>
+        </div>
+      </div>
+
+      <!-- คนที่ 4 -->
+      <div class="employee-card">
+        <div class="employee-info">
+          <div class="employee-icon">
+            <img src="member4.jpg" alt="nipawan" onerror="this.replaceWith('👤')">
+          </div>
+          <h3>นิภาวัลย์ เข้มแข็ง</h3>
+          <div class="employee-line"></div>
+          <p><strong>ตำแหน่ง:</strong> พนักงาน Part-time</p>
+          <p><strong>หน้าที่:</strong> จัดทำรายงาน</p>
+          <p>🐶 GitHub ของฉัน</p>
+          <a href="https://nipawan290949-rgb.github.io/Resume/" target="_blank">Resume</a>
+        </div>
+      </div>
+
+      <!-- คนที่ 5 -->
+      <div class="employee-card">
+        <div class="employee-info">
+          <div class="employee-icon">
+            <img src="member5.jpg" alt="navapus" onerror="this.replaceWith('👤')">
+          </div>
+          <h3>นวพรรษ นารีรักษ์</h3>
+          <div class="employee-line"></div>
+          <p><strong>ตำแหน่ง:</strong> พนักงาน Part-time</p>
+          <p><strong>หน้าที่:</strong> ดูแลสไลด์</p>
+          <p>🐶 GitHub ของฉัน</p>
+          <a href="https://sinvear8888-lang.github.io/Resume/" target="_blank">Resume</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer><div><strong>MooSweet</strong><span>ขนมโฮมเมด ทำสดใหม่ทุกวัน</span></div><p>© 2026 MooSweet</p></footer>
+<div id="cartBox" class="cart-box" aria-hidden="true">
+  <div class="cart-head"><h2>ตะกร้าสินค้า</h2><button class="close" onclick="closeCart()" aria-label="ปิด">✕</button></div>
+  <div id="cartItems">ยังไม่มีสินค้า</div>
+  <div class="cart-summary"><span>รวมสินค้า</span><strong>฿<span id="cartTotal">0</span></strong></div>
+  <button class="main-btn full" onclick="checkout()">ไปชำระเงิน</button>
+</div>
+<div id="cartOverlay" class="cart-overlay" onclick="closeCart()"></div>
+<script src="script.js"></script>
+</body>
+</html>

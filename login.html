@@ -1,0 +1,24 @@
+<!DOCTYPE html><html lang="th"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MooSweet - เข้าสู่ระบบ</title><link rel="stylesheet" href="style.css"></head><body><header>
+<nav class="navbar">
+  <a class="brand" href="index.html">🍓 <span>MooSweet</span></a>
+  <div class="menu">
+    <a href="index.html">หน้าแรก</a>
+    <a href="index.html#products">สินค้า</a>
+    <a href="about.html">เกี่ยวกับร้าน</a>
+    <a href="contact.html">ติดต่อ</a>
+    <a href="orders.html" id="ordersLink">คำสั่งซื้อ</a>
+    <a href="admin.html" id="adminLink" class="admin-link" style="display:none">จัดการร้าน</a>
+    <a href="login.html" id="authLink">เข้าสู่ระบบ</a>
+    <button id="logoutBtn" class="logout-btn" type="button" onclick="logout()" style="display:none">ออกจากระบบ</button>
+    <button class="cart-trigger" onclick="showCart()">🛒 <span>ตะกร้า</span> <b id="cartCount">0</b></button>
+  </div>
+</nav>
+</header><main><section class="auth-page"><div class="auth-card"><span class="eyebrow">MEMBER</span><h2>ยินดีต้อนรับกลับ 👋</h2><p>เข้าสู่ระบบเพื่อสั่งซื้อและติดตามคำสั่งซื้อ</p><div class="auth-tabs"><button class="auth-tab active" data-mode="login">เข้าสู่ระบบ</button><button class="auth-tab" data-mode="register">สมัครสมาชิก</button></div><form id="authForm"><input id="username" placeholder="ชื่อผู้ใช้" style="display:none"><input id="email" type="email" placeholder="อีเมล" required><input id="password" type="password" placeholder="รหัสผ่านอย่างน้อย 6 ตัว" required><button class="main-btn full" type="submit">เข้าสู่ระบบ</button></form><div id="authMsg"></div></div></section></main><footer><div><strong>MooSweet</strong><span>ขนมโฮมเมด ทำสดใหม่ทุกวัน</span></div><p>© 2026 MooSweet</p></footer>
+<div id="cartBox" class="cart-box" aria-hidden="true">
+  <div class="cart-head"><h2>ตะกร้าสินค้า</h2><button class="close" onclick="closeCart()" aria-label="ปิด">✕</button></div>
+  <div id="cartItems">ยังไม่มีสินค้า</div>
+  <div class="cart-summary"><span>รวมสินค้า</span><strong>฿<span id="cartTotal">0</span></strong></div>
+  <button class="main-btn full" onclick="checkout()">ไปชำระเงิน</button>
+</div>
+<div id="cartOverlay" class="cart-overlay" onclick="closeCart()"></div>
+<script src="script.js"></script></body></html>
