@@ -21,7 +21,10 @@ const setTokenCookie = (res, token) => {
 // @route POST /api/auth/register
 const register = async (req, res) => {
   try {
-    const { username, email, password, phone, address } = req.body;
+    const username = String(req.body.username || "").trim();
+const email = String(req.body.email || "").trim().toLowerCase();
+const password = String(req.body.password || "");
+const { phone, address } = req.body;
 
     if (!username || !email || !password) {
       return res
